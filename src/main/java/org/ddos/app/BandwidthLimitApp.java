@@ -37,7 +37,7 @@ import java.util.TimerTask;
 @Component(immediate = true)
 public class BandwidthLimitApp extends BaseResource {
 
-    private static final long BANDWIDTH_LIMIT = 20000000000L; // Bandwidth limit in bits per second
+    private static final long BANDWIDTH_LIMIT = 21474836480L; // Bandwidth limit in bits per second (20Gbps)
     private static final long PORT_DOWN_TIME = 3600000; // Port downtime in milliseconds
     private static Logger log = LoggerFactory.getLogger(BandwidthLimitApp.class);
 
