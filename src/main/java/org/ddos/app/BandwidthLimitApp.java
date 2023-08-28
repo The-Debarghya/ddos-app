@@ -37,8 +37,8 @@ import java.util.TimerTask;
 @Component(immediate = true)
 public class BandwidthLimitApp extends BaseResource {
 
-    private static final long BANDWIDTH_LIMIT = 21474836480L; // Bandwidth limit in bits per second (20Gbps)
-    private static final long PORT_DOWN_TIME = 3600000; // Port downtime in milliseconds
+    private static final long BANDWIDTH_LIMIT = 10015320L; // Bandwidth limit in bits per second (20Gbps)
+    private static final long PORT_DOWN_TIME = 300000; // Port downtime in milliseconds
     private static Logger log = LoggerFactory.getLogger(BandwidthLimitApp.class);
 
     @Reference(cardinality = ReferenceCardinality.MANDATORY)
@@ -99,7 +99,7 @@ public class BandwidthLimitApp extends BaseResource {
 
         @Override
         public void run() {
-            PortStatistics portStats = deviceService.getStatisticsForPort(this.deviceId, this.portNumber);
+            PortStatistics portStats = deviceService.getDeltaStatisticsForPort(this.deviceId, this.portNumber);
             if (portStats == null) {
                 String str = String.format("No statistics for Device:%s, Port:%s", this.deviceId.toString(), this.portNumber.toString());
                 log.info(str);
